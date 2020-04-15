@@ -78,6 +78,7 @@ class TestListHelper(unittest.TestCase):
         act_list = [1, 2, 5, 7, 9, 11, 26, 89, 125, 578]
         expected = -1
         res = lh.binary_search(act_list, 3)
+
         self.assertEqual(expected, res)
 
 
