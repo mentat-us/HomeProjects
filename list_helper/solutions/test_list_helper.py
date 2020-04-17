@@ -1,6 +1,6 @@
 import unittest as ut
-from list_helper import list_helper as lh
-
+#from list_helper import list_helper as lh
+from list_helper.solutions import list_helper as lh
 
 class ListHelperTester(ut.TestCase):
 
@@ -13,11 +13,23 @@ class ListHelperTester(ut.TestCase):
         test_list = [10, 52, 99, 56, 5, 4, 22, 17, 52, 23]
         self.assertEqual(99, lh.max(test_list))
 
+    #left 1 step
     def test_shift_1(self):
-        pass
-        ##act_list = [1, 2, 3, 4, 5, 6]
-        ##lh.shift(act_list, True, 1)
-        ##self.assertEqual([2, 3, 4, 5, 6, 1], act_list)
+        act_list = [1, 2, 3, 4]
+        expected = [2, 3, 4, 1]
+        lh.shift(act_list)
+        self.assertEqual(expected, act_list)
+
+    def test_shift_2(self):
+        act_list = [1, 2, 3, 4]
+        expected = [3, 4, 1, 2]
+        lh.shift(act_list, step=2)
+        self.assertEqual(expected, act_list)
+
+    def test_shift_3(self):
+        act_list = [1, 2, 3, 4, 5, 6]
+        lh.shift(act_list, step=3)
+        self.assertEqual([4, 5, 6, 1, 2, 3], act_list)
 
     def test_shuffle_1(self):
         act_list = [1, 2, 3, 4, 5, 6]

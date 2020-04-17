@@ -58,8 +58,11 @@ def shift(lst, left=True, step=1):
     """
     temp = lst[0: step] if left else lst[-step:]
 
-    start = step if left else len(lst) - step - 1
-    stop = len(lst) if left else len(lst) - step - 1
+    #start = step if left else len(lst) - step - 1
+    #stop = len(lst) if left else len(lst) - step - 1
+
+    start = 1
+    stop = len(lst) - step
 
     for i in range(start, stop):
         lst[i - 1] = lst[i]

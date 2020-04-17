@@ -46,7 +46,7 @@ def shift(lst, left=True, step=1):
     :return: (None)
     shifts the values of the given list
     [1, 2, 3, 4] --> [2, 3, 4, 1]  left step 1
-    [1, 2, 3, 4] --> [3, 4, 1, 2]
+    [1, 2, 3, 4] --> [3, 4, 1, 2] left 2 step
     """
     temp_list = lst[0:step]
 
