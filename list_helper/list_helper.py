@@ -47,20 +47,32 @@ def shift(lst, left=True, step=1):
     shifts the values of the given list
     [1, 2, 3, 4] --> [2, 3, 4, 1]  left step 1
     [1, 2, 3, 4] --> [3, 4, 1, 2] left 2 step
+    [1, 2, 3, 4] --> [4, 1, 2, 3]  right step 1
+    [1, 2, 3, 4] --> [3, 4, 1, 2] right 2 step
     """
-    temp_list = lst[0:step]
+    temp_list = lst[0: step] if left else lst[-step:]
 
-    start = 1
-    stop = len(lst)
+    start = step if left else len(lst) - step - 1
+    stop = len(lst) if left else -1
+
+    # left
+    if left:
+        for i in range(start, stop):
+            lst[i - step] = lst[i]
+
+        for i, j in enumerate(range(stop - step, stop), 0):
+            lst[j] = temp_list[i]
+    #right
+    else:
+        for i in range(start, stop, -1):
+            lst[i + step] = lst[i]
+
+        for i in range(len(temp_list)):
+            lst[i] = temp_list[i]
 
 
-    for j in range(start, stop):
-        lst[j - 1] = lst[j]
 
 
-    for val in temp_list:
-        lst[len(lst) - step] = val
-        step -= 1
 
 import random
 def shuffle(lst):
