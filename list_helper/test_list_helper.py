@@ -21,7 +21,7 @@ class TestListHelper(unittest.TestCase):
     def test_max_5(self):
         act_list = []
         self.assertEqual(None, lh.get_max(act_list))
-    '''
+
     def test_shift_1(self):
         act_list = [1, 2, 3, 4]
         expected = [2, 3, 4, 1]
@@ -33,7 +33,35 @@ class TestListHelper(unittest.TestCase):
         expected = [3, 4, 1, 2]
         lh.shift(act_list, step=2)
         self.assertEqual(expected, act_list)
-    '''
+
+    def test_shift_3(self):
+        act_list = [1, 2, 3, 4, 5, 6]
+        lh.shift(act_list, step=3)
+        self.assertEqual([4, 5, 6, 1, 2, 3], act_list)
+
+
+    def test_shift_right_1(self):
+        act_list = [1, 2, 3, 4]
+        expected = [4, 1, 2, 3]
+        lh.shift(act_list, left=False)
+        self.assertEqual(expected, act_list)
+
+    def test_shift_right_2(self):
+        act_list = [1, 2, 3, 4]
+        expected = [3, 4, 1, 2]
+        lh.shift(act_list, left=False, step=2)
+        self.assertEqual(expected, act_list)
+
+    def test_shift_right_3(self):
+        act_list = [1, 2, 3, 4]
+        lh.shift(act_list, left=False, step=3)
+        self.assertEqual([2, 3, 4 , 1], act_list)
+
+    def test_shift_right_3(self):
+        act_list = [1, 2, 3, 4]
+        lh.shift(act_list, left=False, step=4)
+        self.assertEqual([1, 2, 3, 4], act_list)
+
     def test_shuffle_1(self):
         act_list = [1, 2, 3, 4]
         lh.shuffle(act_list)
