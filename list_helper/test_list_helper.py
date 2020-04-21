@@ -109,7 +109,39 @@ class TestListHelper(unittest.TestCase):
 
         self.assertEqual(expected, res)
 
+    def test_get_min_1(self):
+        act_list = [1, 2, 3, -4, 5]
+        expected = -4
+        self.assertEqual(expected, lh.get_min(act_list))
 
+    def test_get_sum_1(self):
+        act_list = [1, 2, 3, -4, 5, 0]
+        expected = 7
+        self.assertEqual(expected, lh.get_sum(act_list))
+
+    def test_remove_all_val_1(self):
+        act_list = [1, 2, 3, -4, 5, 0]
+        val = -4
+        expected_list = [1, 2, 3, 5, 0]
+        lh.remove_all_val(act_list, val)
+        self.assertEqual(expected_list, act_list)
+
+    def test_remove_all_val_2(self):
+        act_list = [1, 2, 3, -4, 5, -4, 0]
+        val = -4
+        expected_list = [1, 2, 3, 5, 0]
+        lh.remove_all_val(act_list, val)
+        self.assertEqual(expected_list, act_list)
+
+    def test_copy_list(self):
+        act_list = [1, 2, 3, -4, 5, -4, 0]
+        expected_list = [1, 2, 3, -4, 5, -4, 0]
+        self.assertEqual(expected_list, lh.copy_list(act_list))
+
+    def test_reverse_list(self):
+        act_list = [1, 2, 3, -4, 5, -4, 0]
+        expected_list = [0, -4, 5, -4, 3, 2, 1]
+        self.assertEqual(expected_list, lh.remove_list(act_list))
 
 if __name__ == '__main__':
     unittest.main()
