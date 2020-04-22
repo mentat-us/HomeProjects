@@ -129,7 +129,7 @@ def reverse_list(lst):
     :param lst: list
     :return list:
     """
-    return lst.reverse
+    return list(reversed(lst))
 
 
 def for_each_list(lst, func):

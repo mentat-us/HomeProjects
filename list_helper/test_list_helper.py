@@ -83,6 +83,7 @@ class TestListHelper(unittest.TestCase):
         lh.for_each_list(act_list, thirds)
         self.assertEqual(expected, act_list)
 
+
     def test_reduce_1(self):
         def sum(val1, val2):
             return val1 + val2
@@ -90,7 +91,7 @@ class TestListHelper(unittest.TestCase):
         expected = 10
         self.assertEqual(expected, lh.reduce_list(act_list, sum))
 
-    def test_bubble_sort(self):
+    def test_bubble_sort_234(self):
         act_list = [2, 3, 5, 1]
         expected = [1, 2, 3, 5]
         lh.sort_bubble(act_list)
@@ -141,7 +142,7 @@ class TestListHelper(unittest.TestCase):
     def test_reverse_list(self):
         act_list = [1, 2, 3, -4, 5, -4, 0]
         expected_list = [0, -4, 5, -4, 3, 2, 1]
-        self.assertEqual(expected_list, lh.remove_list(act_list))
+        self.assertEqual(expected_list, lh.reverse_list(act_list))
 
 if __name__ == '__main__':
     unittest.main()
