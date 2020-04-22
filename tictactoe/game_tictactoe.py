@@ -1,11 +1,14 @@
+import tictactoe as ttt
+
 def game_loop():
-    pass
+    board = ttt.init_board()
+    ttt.print_board(board)
 
-
+    ttt.
 
 
 def main():
-    pass
+    game_loop()
 
 
 
