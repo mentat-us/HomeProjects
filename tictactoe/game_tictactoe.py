@@ -4,7 +4,7 @@ def game_loop():
     board = ttt.init_board()
     ttt.print_board(board)
 
-    ttt.
+    
 
 
 def main():
