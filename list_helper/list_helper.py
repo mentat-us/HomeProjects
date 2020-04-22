@@ -27,7 +27,13 @@ def get_min(lst):
     :return (int): None empty list otherwise
     min value of the list
     """
-    pass
+    if len(lst) == 0:
+        return None
+    min = lst[0]
+    for i in range(1, len(lst)):
+        if lst[i] < min:
+            min = lst[i]
+    return min
 
 
 def get_sum(lst):
@@ -35,7 +41,10 @@ def get_sum(lst):
     :param lst: (list):
     :return (int): sum of the values in the lst (numeric)
     """
-    pass
+    sum = 0
+    for i in range(len(lst)):
+        sum += lst[i]
+    return sum
 
 
 def shift(lst, left=True, step=1):
@@ -95,7 +104,11 @@ def remove_all_val(lst, val):
     :param val: (int):
     :return: --
     """
-    pass
+    len_list = 0
+    while len_list <= len(lst) - 1:
+        if lst[len_list] == val:
+            lst.remove(lst[len_list])
+        len_list += 1
 
 
 def copy_list(lst):
@@ -104,7 +117,10 @@ def copy_list(lst):
     :param lst: list
     :return list:
     """
-    pass
+    lst_1 = []
+    for i in range(len(lst)):
+        lst_1.append(lst[i])
+    return lst_1
 
 
 def reverse_list(lst):
@@ -113,7 +129,7 @@ def reverse_list(lst):
     :param lst: list
     :return list:
     """
-    pass
+    return list(reversed(lst))
 
 
 def for_each_list(lst, func):
