@@ -53,7 +53,13 @@ def print_board(board):
     for i in range(BOARD_SIZE):
         print("| ", end="")
         for j in range(BOARD_SIZE):
-            print(board[i][j], end=" | ")
+            if board[i][j] == TILE_EMPTY:
+                print(" ", end=" | ")
+            elif board[i][j] == TILE_X:
+                print("X", end=" | ")
+            else:
+                print("O", end=" | ")
+
         print()
         print(" ___", "___", "___")
         #print(" ___", "___", "___")    #üstteki print olmadığında bunu sola kaydırsam oluyordu.
@@ -63,65 +69,74 @@ def print_board(board):
 def play_tile(board, r, c, tile):
     board[r][c] = tile
 
+def __is_empty(test):
+    for i in range(BOARD_SIZE):
+        for j in range(BOARD_SIZE):
+            if test[i][j] != TILE_EMPTY:
+                return False
+    return True
+
+def control(test):
+    for i in range(len(test)):
+        o_counter = 0
+        x_counter = 0
+        for j in range(len(test[i])):
+            if test[i][j] == TILE_O:
+                o_counter += 1
+            elif test[i][j] == TILE_X:
+                x_counter += 1
+
+        if o_counter == BOARD_SIZE or x_counter == BOARD_SIZE:
+            return True
+
+    return False
 
 def is_tictactoe_by_row(board):
+    test = []
     for i in range(BOARD_SIZE):
-        test = []
         test.append([])
+
+    for i in range(BOARD_SIZE):
         for j in range(BOARD_SIZE):
             test[i].append(board[i][j])   ### !!! test[j] ?
-        control = 0
-        for k in range(len(test) - 1):     ### aşağıdaki üçünde d ebunu aynı yaptım fonksiyona çeviriyim mi ?
-            if test[k] == test[k + 1]:
-                control += 1
-        if control == 2:
-            return True
-    return False
+    return control(test)
 
 def is_tictactoe_by_colum(board):
-    for i in range(BOARD_SIZE):
-        test = []
+    test = []
+    for k in range(BOARD_SIZE):
         test.append([])
+
+    for i in range(BOARD_SIZE):
         for j in range(BOARD_SIZE):
-            test[j].append(board[j][i])   ### !!! test[i] ?
-        control = 0
-        for k in range(len(test) - 1):
-            if test[k] == test[k + 1]:
-                control += 1
-        if control == 2:
-            return True
-    return False
+            test[i].append(board[j][i])   ### !!! test[i] ?
+
+
+    return control(test)
 
 def is_tictactoe_by_diagonal(board):
-    test = []
+    test_r = []
+
     for i in range(BOARD_SIZE):
-        test.append([])   #bir kere olucağına emin olduğum için içerde kontrol yapmadım
         for j in range(BOARD_SIZE):
             if i == j:
-                test.append(board[i][j])
-        control = 0
-        for k in range(len(test) - 1):
-            if test[k] == test[k + 1]:
-                control += 1
-        if control == 2:
-            return True
-    return False
+                test_r.append(board[i][j])
+
+    test = []
+    test.append(test_r)
+    for k in range(1, BOARD_SIZE):
+       test.append([])
+    return control(test)
 
 def is_tictactoe_by_reverse_diagonal(board):
-    test = []
-    for i in range(BOARD_SIZE, 0, -1):
-        test.append([])
-        for j in range(BOARD_SIZE):
-            if i == j:
-                test.append(board[i][j])
-        control = 0
-        for k in range(len(test) - 1):
-            if test[k] == test[k + 1]:
-                control += 1
-        if control == 2:
-            return True
-    return False
+    test_r = []
+    for i in range(BOARD_SIZE):
+       test_r.append(board[i][BOARD_SIZE - i - 1])
 
+    test = []
+    test.append(test_r)
+    for k in range(1, BOARD_SIZE):
+        test.append([])
+    return control(test)
 
 def is_tictactoe(board):
     """
@@ -145,6 +160,8 @@ def is_playable(board, r, c):
     :param board:
     :return:
     """
+    if (r < 0 or r > BOARD_SIZE - 1 or c < 0 or c > BOARD_SIZE - 1):
+        return False
     if board[r][c] == TILE_EMPTY:
         return True
     else:
