@@ -15,7 +15,6 @@ def get_max(lst):
     """
     pass
 
-
 def get_min(lst):
     """
     :param lst:  (list)
@@ -40,10 +39,18 @@ def shift(lst, left=True, step=1):
     :param step: (int)  shift count (default 1)
     :return: (None)
     shifts the values of the given list
+    [1, 2, 3, 4] --> [2, 3, 4, 1]  left step 1
+    [1, 2, 3, 4] --> [3, 4, 1, 2] left 2 step
+    [1, 2, 3, 4] --> [4, 1, 2, 3]  right step 1
+    [1, 2, 3, 4] --> [3, 4, 1, 2] right 2 step
     """
     pass
 
 
+
+
+
+import random
 def shuffle(lst):
     """
     Shuffles the list
@@ -91,17 +98,16 @@ def for_each_list(lst, func):
     """
     pass
 
-
 def reduce_list(lst, func):
     """
     apply the func to list and gets the aggregeted value
+    DONT change lst object
     :param lst: (list) lst:
     :param func : (function) func: func(v1, v2) returns a value
     :return: aggregated value of list
     reduce_list([1, 2, 3, 4], sum_val)
     """
     pass
-
 
 def sort_bubble(lst):
     """
@@ -111,6 +117,7 @@ def sort_bubble(lst):
     https://youtu.be/nmhjrI-aW5o
     """
     pass
+
 
 
 def sort_selection(lst):
@@ -182,6 +189,7 @@ def fill_with_val(lst, val):
 def fill_range(lst, val, begin, end):
     """
     Sets list items with given val in given range
+    begin inclusive, end exculisve
     :param lst: list
     :param val: int
     :param begin: val
@@ -198,4 +206,5 @@ def fill_random(lst, upper_bound, lower_bound=0):
     :param lower_bound:
     :return:
     """
+
     pass
